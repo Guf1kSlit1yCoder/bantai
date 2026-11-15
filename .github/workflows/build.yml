@@ -23,8 +23,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build debug APK
-        working-directory: bantai
+            - name: Build debug APK
         run: ./gradlew assembleDebug
 
       - name: Upload APK
