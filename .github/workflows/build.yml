@@ -2,7 +2,7 @@ name: Build APK
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -21,14 +21,15 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x bantai/gradlew
 
       - name: Build debug APK
+        working-directory: bantai
         run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: bantai-debug
-          path: app/build/outputs/apk/debug/*.apk
+          path: bantai/app/build/outputs/apk/debug/*.apk
           retention-days: 7
